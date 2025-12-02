@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body onload="runPython()">
+
+<h2>Loading…</h2>
+
+<pre id="result"></pre>
+
+<script>
+function runPython() {
+    fetch("/run")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").textContent =
+          "Status: " + data.status + "\nIP: " + data.ip;
+    })
+    .catch(err => {
+        document.getElementById("result").textContent = "Error: " + err;
+    });
+}
+</script>
+
+</body>
+</html>
